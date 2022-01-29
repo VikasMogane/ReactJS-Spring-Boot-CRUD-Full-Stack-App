@@ -36,17 +36,25 @@ class ListEmployeeComponent extends Component {
 
    // }
 
-   
-    deleteEmployee(id)
-    {
-        console.log('start'+id);
+   viewEmployee(id)
+   {
+    console.log('start'+id);
     
-        EmployeeService.deleteEmployee(id).then((res)=>{
+    EmployeeService.deleteEmployee(id).then((res)=>{
 
-            this.setState({employees:this.state.employees.filter(employee => employee.id !==id)});
-        })
-    }
+        this.setState({employees:this.state.employees.filter(employee => employee.id !==id)});
+    })
 
+   }
+   deleteEmployee(id)
+   {
+       console.log('start'+id);
+   
+       EmployeeService.deleteEmployee(id).then((res)=>{
+
+           this.setState({employees:this.state.employees.filter(employee => employee.id !==id)});
+       })
+   }
     editEmployee(id)
     {
         console.log('start'+id);
@@ -70,10 +78,10 @@ class ListEmployeeComponent extends Component {
         return (
             <div>
                 
-                <h2 className='text-center'> Employees List</h2>
+                <h2 className='text-center'>   Employees List</h2>
                 <div className="row">
               {/* <button style={{width:"126px"}} className="btn btn-primary"  onClick={this.addEmployee}>Add Employee</button> */}
-                <Link style={{width:"126px"}}  to="/addemployee" className="btn btn-primary">Add Employee</Link>
+                <Link style={{width:"140px"}}  to="/addemployee" className="btn btn-primary">Add Employee</Link>
 
 
                 </div>
@@ -105,6 +113,7 @@ class ListEmployeeComponent extends Component {
                                       {/* <button onClick={() =>this.editEmployee(employee.id)}   className="btn btn-info"  style={{ backgroundColor: "#0dcaf0"}}>Update</button> */}
                                       <Link style={{ backgroundColor: "#0dcaf0"}} to={"/updateemployee/"+employee.id} className="btn btn-info" >Update</Link>
                                       <button style={{marginLeft: "10px"}} onClick={ () => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete </button>
+                                      <Link style={{ backgroundColor: "#0dcaf0",marginLeft: "10px"}} to={"/viewemployee/"+employee.id} className="btn btn-info" >View</Link>
 
                                       </td>
                                     </tr>
